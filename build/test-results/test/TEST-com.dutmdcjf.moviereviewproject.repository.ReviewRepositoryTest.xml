@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.dutmdcjf.moviereviewproject.repository.ReviewRepositoryTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-10-07T17:05:41" hostname="DESKTOP-7TMR1TV" time="0.341">
+  <properties/>
+  <testcase name="testGetOneMovieReview()" classname="com.dutmdcjf.moviereviewproject.repository.ReviewRepositoryTest" time="0.341"/>
+  <system-out><![CDATA[02:05:34.862 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+02:05:34.872 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+02:05:34.906 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.dutmdcjf.moviereviewproject.repository.ReviewRepositoryTest] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+02:05:34.916 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.dutmdcjf.moviereviewproject.repository.ReviewRepositoryTest], using SpringBootContextLoader
+02:05:34.920 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.dutmdcjf.moviereviewproject.repository.ReviewRepositoryTest]: class path resource [com/dutmdcjf/moviereviewproject/repository/ReviewRepositoryTest-context.xml] does not exist
+02:05:34.920 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.dutmdcjf.moviereviewproject.repository.ReviewRepositoryTest]: class path resource [com/dutmdcjf/moviereviewproject/repository/ReviewRepositoryTestContext.groovy] does not exist
+02:05:34.921 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.dutmdcjf.moviereviewproject.repository.ReviewRepositoryTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+02:05:34.922 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.dutmdcjf.moviereviewproject.repository.ReviewRepositoryTest]: ReviewRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+02:05:34.967 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.dutmdcjf.moviereviewproject.repository.ReviewRepositoryTest]
+02:05:35.041 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [D:\springBootIntelliJ\moviereviewProject\build\classes\java\main\com\dutmdcjf\moviereviewproject\MoviereviewProjectApplication.class]
+02:05:35.044 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.dutmdcjf.moviereviewproject.MoviereviewProjectApplication for test class com.dutmdcjf.moviereviewproject.repository.ReviewRepositoryTest
+02:05:35.149 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.dutmdcjf.moviereviewproject.repository.ReviewRepositoryTest]: using defaults.
+02:05:35.150 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+02:05:35.177 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@6754ef00, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@619bd14c, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@323e8306, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@a23a01d, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@4acf72b6, org.springframework.test.context.support.DirtiesContextTestExecutionListener@7561db12, org.springframework.test.context.transaction.TransactionalTestExecutionListener@3301500b, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@24b52d3e, org.springframework.test.context.event.EventPublishingTestExecutionListener@15deb1dc, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@6e9c413e, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@57a4d5ee, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@5af5def9, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@3a45c42a, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@36dce7ed, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@47a64f7d]
+02:05:35.181 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@13c612bd testClass = ReviewRepositoryTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@3ef41c66 testClass = ReviewRepositoryTest, locations = '{}', classes = '{class com.dutmdcjf.moviereviewproject.MoviereviewProjectApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@53812a9b, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@4fbda97b, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@4879f0f2, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@5b43fbf6, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@4bef0fe3, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@14f232c4], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true]], class annotated with @DirtiesContext [false] with mode [null].
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.7.4)
+
+2022-10-08 02:05:35.556  INFO 3192 --- [    Test worker] c.d.m.repository.ReviewRepositoryTest    : Starting ReviewRepositoryTest using Java 11.0.16 on DESKTOP-7TMR1TV with PID 3192 (started by 김동민 in D:\springBootIntelliJ\moviereviewProject)
+2022-10-08 02:05:35.559  INFO 3192 --- [    Test worker] c.d.m.repository.ReviewRepositoryTest    : No active profile set, falling back to 1 default profile: "default"
+2022-10-08 02:05:36.533  INFO 3192 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-08 02:05:36.634  INFO 3192 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 91 ms. Found 4 JPA repository interfaces.
+2022-10-08 02:05:37.604  INFO 3192 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-08 02:05:37.676  INFO 3192 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-10-08 02:05:37.862  INFO 3192 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-08 02:05:37.989  INFO 3192 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-08 02:05:38.101  INFO 3192 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-08 02:05:38.144  INFO 3192 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MariaDB106Dialect
+2022-10-08 02:05:38.894  INFO 3192 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-08 02:05:38.901  INFO 3192 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-08 02:05:39.315  WARN 3192 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-08 02:05:39.765  INFO 3192 --- [    Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-10-08 02:05:41.202  INFO 3192 --- [    Test worker] c.d.m.repository.ReviewRepositoryTest    : Started ReviewRepositoryTest in 5.988 seconds (JVM running for 7.368)
+Hibernate: 
+    select
+        review0_.rno as rno1_3_0_,
+        member1_.memid as memid1_0_1_,
+        review0_.modifydate as modifyda2_3_0_,
+        review0_.registdate as registda3_3_0_,
+        review0_.grade as grade4_3_0_,
+        review0_.member_memid as member_m6_3_0_,
+        review0_.movie_mno as movie_mn7_3_0_,
+        review0_.text as text5_3_0_,
+        member1_.modifydate as modifyda2_0_1_,
+        member1_.registdate as registda3_0_1_,
+        member1_.email as email4_0_1_,
+        member1_.nickname as nickname5_0_1_,
+        member1_.pw as pw6_0_1_ 
+    from
+        review review0_ 
+    left outer join
+        member member1_ 
+            on review0_.member_memid=member1_.memid 
+    where
+        review0_.movie_mno=?
+83
+1
+4 영화 추천합니다
+Member(memid=15, email=user15@gmail.com, pw=1234, nickname=usernn15)
+114
+5
+4 영화 추천합니다
+Member(memid=13, email=user13@gmail.com, pw=1234, nickname=usernn13)
+129
+3
+4 영화 추천합니다
+Member(memid=47, email=user47@gmail.com, pw=1234, nickname=usernn47)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
