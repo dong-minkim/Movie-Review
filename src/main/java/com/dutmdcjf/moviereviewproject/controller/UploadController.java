@@ -71,7 +71,7 @@ public class UploadController {
                 String thumbnailFileName = uploadPath + File.separator + folderPath + File.separator
                                         + "s_" + uuid + "_" + fileName;
                 File thumbnailFile = new File(thumbnailFileName);
-                Thumbnailator.createThumbnail(saveFilePath.toFile(), thumbnailFile, 100, 100);
+                Thumbnailator.createThumbnail(saveFilePath.toFile(), thumbnailFile, 200, 200);
 
                 //브라우저에 전달하기 위해 담음
                 uploadResultDTOList.add(new UploadResultDTO(fileName, uuid, folderPath));
