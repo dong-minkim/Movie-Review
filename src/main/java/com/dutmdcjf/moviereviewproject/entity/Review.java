@@ -25,4 +25,11 @@ public class Review extends DateEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
+
+    public void setText(String text){
+        this.text=text;
+    }
+    public void setGrade(int grade){
+        this.grade=grade;
+    }
 }

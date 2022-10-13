@@ -98,14 +98,25 @@ public class UploadController {
 
 
     @GetMapping("/display")
-    public ResponseEntity<byte[]> getFile(String fileName){
+    public ResponseEntity<byte[]> getFile(String fileName, String origin){
         ResponseEntity<byte[]> result = null;
+
         try{
             String srcFileName = URLDecoder.decode(fileName,"UTF-8");
+
+            log.info("srcFileName: " + srcFileName);
+
             File file = new File(uploadPath + File.separator + srcFileName);
 
-            log.info("fileName: " + srcFileName);
-            log.info("file: " + file);
+            log.info("thumbnailFile: " + file);
+
+            if(origin != null ){
+                //s_를 제거함으로 섬네일 파일이 아닌 원본 파일 불러옴
+                file = new File(file.getParent(), file.getName().substring(2));
+            }
+
+            log.info("originFile: " + file);
+
 
             HttpHeaders header = new HttpHeaders();
             //MIME 타입 처리

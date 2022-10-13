@@ -54,6 +54,7 @@
 
         <div class="form-group">
             <label style="color: blue; font-weight: bold">Avg </label>
+            <div class="starrravg"></div>
             <input type="text" class="form-control" name="title" th:value="${dto.avg}" readonly>
         </div>
 
@@ -63,8 +64,263 @@
             Review Count <span class="badge badge-light">[[${dto.reviewCnt}]]</span>
         </button>
 
+        <button type="button" class="addReviewBtn btn btn-info">
+            Review Register
+        </button>
+
+        <div class="reviewList list-group">
+        </div>
+
+        <!--리뷰 등록 Modal 창-->
+        <div class="reviewModal modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Movie Review</h5>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label >Reviewer ID</label>
+                            <input type="text" class="form-control" name="memid" >
+                        </div>
+                        <div class="form-group">
+                            <label >Grade <span class="grade"></span></label>
+                            <div class='starrr'></div>
+                        </div>
+                        <div class="form-group">
+                            <label >Review Text</label>
+                            <input type="text" class="form-control" name="text" placeholder="Good Movie!" >
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary reviewSaveBtn">Save </button>
+                        <button type="button" class="btn btn-warning modifyBtn">Modify </button>
+                        <button type="button" class="btn btn-danger removeBtn">Remove </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="imageModal modal " tabindex="-2" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Picture</h5>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script th:src="@{/js/starrr.js}"></script>
+        <link th:href="@{/css/starrr.css}" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+
         <script>
             $(document).ready(function(e){
+
+
+                var mno = [[${dto.mno}]];
+                var grade = 5;
+                var gradeOne;
+                var avg = [[${dto.avg}]];
+
+                $('.starrr').starrr({
+                    rating: grade,
+                    change: function (e, value){
+                        if(value!=0){
+                            console.log("grade:" + value);
+                            grade = value;
+                        }
+                    }
+                });
+
+                $('.starrravg').starrr({
+                   rating: avg,
+                    readOnly: true
+                });
+
+                $('.starrrgrade').starrr({
+                    rating: gradeOne,
+                    readOnly: true
+                });
+
+
+                var reviewModal = $(".reviewModal");
+                var inputMemid = $('input[name="memid"]');
+                var inputText = $('input[name="text"]');
+                
+                $(".addReviewBtn").click(function(){
+                    inputMemid.val("");
+                    inputText.val("");
+                    
+                    $(".removeBtn, .modifyBtn").hide();
+                    $(".reviewSaveBtn").show();
+
+                    reviewModal.modal('show');
+                });
+
+                $(".close").click(function(){
+                    reviewModal.modal('hide');
+
+                    $('.imageModal').modal('hide');
+                });
+
+                $(".reviewSaveBtn").click(function(){
+                    var data = {mno:mno, grade:grade, text:inputText.val(), memid:inputMemid.val()};
+
+                    console.log(data);
+
+                    $.ajax({
+                        url:'/review/' + mno,
+                        type: "POST",
+                        data: JSON.stringify(data),
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "text",
+                        success: function (result){
+                            console.log("result: " + result);
+
+                            self.location.reload();
+                        }
+                    })
+                    reviewModal.modal('hide');
+
+                });
+
+                function getReviews(){
+                    function formatTime(str){
+                        var date = new Date(str);
+
+                        return date.getFullYear() + '/' +
+                            (date.getMonth() + 1) + '/' +
+                            date.getDate() + ' ' +
+                            date.getHours() + ':' +
+                            date.getMinutes();
+                    }
+
+                    $.getJSON("/review/"+ mno +"/list", function(arr){
+
+                        console.log(arr);
+
+                        var str ="";
+
+                        $.each(arr, function(idx, review){
+                            console.log("===");
+                            console.log(review);
+                            gradeOne = review.grade;
+
+                            str += '<div class="card-body" data-rno="'+review.rno+'" data-grade='+review.grade+' data-memid="'+review.memid+'">';
+                            str += '<h5 class="card-title">'+review.text+' <span>'+review.grade+'</span></h5>';
+                            str += '<h6 class="card-subtitle mb-2 text-muted">'+review.nickname+'</h6>';
+                            str += '<p class="card-text">'+ formatTime(review.registDate) +'</p>';
+                            str += '</div>';
+                        });
+
+                        $(".reviewList").html(str);
+                    });
+                }
+
+                getReviews();
+
+                var rno;
+                /*특정 리뷰 선택*/
+                $(".reviewList").on("click", ".card-title", function() {
+
+                    $(".reviewSaveBtn").hide();
+                    $(".removeBtn , .modifyBtn").show();
+
+                    console.log($(this));
+                    var targetReview = $(this).parent();
+                    console.log(targetReview);
+                    console.log($(this).parents());
+
+                    rno = targetReview.data("rno");
+                    console.log("rno: "+ rno);
+                    inputMemid.val(targetReview.data("memid"));
+                    inputText.val(targetReview.find('.card-title').clone().children().remove().end().text());
+
+                    var grade = targetReview.data("grade");
+                    console.log(grade);
+                    $(".starrr a:nth-child("+grade+")").trigger('click');
+
+                    var data = {mno:mno, grade:grade, text:inputText.val(), memid:inputMemid.val()};
+                    console.log(data);
+
+                    reviewModal.modal('show');
+                });
+
+
+                $(".modifyBtn").on("click", function(){
+
+                    var data = {rno: rno, mno:mno, grade:grade, text:inputText.val(), memid: inputMemid.val() };
+                    console.log(data);
+                    alert("modify alert");
+
+                    $.ajax({
+                        url:"/review/"+mno +"/"+ rno,
+                        type:"PUT",
+                        data:JSON.stringify(data),
+                        contentType:"application/json; charset=utf-8",
+                        dataType:"text",
+                        success: function(result){
+                            console.log("result");
+                            console.log(result);
+                            alert("..");
+                            self.location.reload();
+
+                        }
+                    })
+                    reviewModal.modal('hide');
+                });
+
+                $(".removeBtn").on("click", function(){
+
+                    var data = {rno: rno};
+
+                    console.log(data);
+
+                    $.ajax({
+                        url:'/review/'+mno +"/"+ rno,
+                        type:"DELETE",
+                        contentType:"application/json; charset=utf-8",
+                        dataType:"text",
+                        success: function(result){
+
+                            console.log("result: " + result);
+
+                            self.location.reload();
+
+                        }
+                    })
+                    reviewModal.modal('hide');
+                });
+
+                $(".uploadResult li").click(function() {
+
+                    var file = $(this).data('file');
+
+                    console.log(file);
+
+                    $('.imageModal .modal-body').html("<img style='width:100%' src='/display?fileName="+file+"&origin=1' >")
+
+                    $(".imageModal").modal("show");
+
+                });
+
 
             });
         </script>
