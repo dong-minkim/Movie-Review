@@ -3,7 +3,17 @@
 <th:block th:replace="~{/layout/basic :: setContent(~{this::content} )}">
     <th:block th:fragment="content">
 
-        <h1 class="mt-4">Movie Register Page</h1>
+        <h1 class="mt-4">Movie Register Page
+            <div style="float: right">
+            <span>
+                <a th:href="@{/movie/list}">
+                    <button type="button" class="btn btn-outline-primary">
+                        Movie List
+                    </button>
+                </a>
+            </span>
+            </div>
+        </h1>
 
         <style>
             .uploadResult {
@@ -40,11 +50,11 @@
                 <label >Title</label>
                 <input type="text" class="form-control" name="title" placeholder="Enter Title">
             </div>
-
+            <br>
             <div class="form-group fileForm">
                 <label >Image Files</label>
-                <div class="custom-file">
-                    <input type="file"  class="custom-file-input files" id="fileInput" multiple>
+                <div class="custom-file form-control file">
+                    <input type="file"  class="custom-file-input form-select-sm " id="fileInput" multiple>
                     <label class="custom-file-label" data-browse="Browse"></label>
                 </div>
             </div>
@@ -85,7 +95,7 @@
                     var fileName = $(this).val().split("\\").pop();
                     console.log(fileName);
 
-                    $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+                    /*$(this).siblings(".custom-file-label").addClass("selected").html(fileName);*/
 
                     var formData = new FormData();
                     var inputFile = $(this);
